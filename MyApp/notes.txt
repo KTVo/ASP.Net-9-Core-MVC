@@ -1,0 +1,33 @@
+So far we have gone through the necessary steps within Program.cs
+to build the project. Steps such as adding the controllers and views
+that the project will be using. Then, building the project which provides
+the Services, Controllers, and Web Applications.
+
+Operations within Program.cs:
+    From there, settings to the project build is given such as the ability to 
+    reroute all HTTP requests into HTTPS. Along with defining a default URL
+    routing pattern and so on.
+
+How to Display Variables Between MVC:
+    Not to mention, how a C# project forms a connection between models, views, and controller is that
+    the action method (which is methods within the controllers handling incoming HTTP-requests) is the same
+    namee as the view file which in this case is "Overview.cshtml".
+
+    Within the Overview.cshtml, it knows which model to use by importing it as such: @model MyApp.Models.Item
+
+    Where within the Controller, you'd declare a new instance of the model class like so:
+
+        public IActionResult Overview()
+        {
+            Item item = new Item()
+            {
+                Name = "Keyboard",
+                Color = "Yellow"
+            };
+            return View(item);
+        }
+
+IActionResult:
+    Finally, I action results is a promise on what the return of a Controller action method should be. The best 
+    feature about it is that it has all knowledge of all possible returns for an action method. This includes
+    Content, View, etc. and you'll be able to return all such things.
