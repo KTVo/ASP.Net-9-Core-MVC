@@ -1,0 +1,89 @@
+# ---- .NET / ASP.NET Core ----
+bin/
+obj/
+out/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.log
+*.tlog
+*.vshost.*
+*.user
+*.suo
+*.cache
+*.dbmdl
+*.jfm
+
+# ---- ASP.NET Core Config ----
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+secrets.json
+
+# ---- Entity Framework Migrations ----
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# ---- Secrets ----
+appsettings.json
+
+# ---- Visual Studio ----
+.vs/
+*.csproj.user
+*.csproj.userosscache
+*.csproj.webinfo
+*.dbmdl
+*.bak
+*.backup
+*.ndf
+
+# ---- Visual Studio Code ----
+.vscode/
+.history/
+*.code-workspace
+
+# ---- JetBrains Rider ----
+.idea/
+*.sln.iml
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+*.nuspec
+
+# ---- Test / Coverage ----
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# ---- Logs ----
+*.log
+logs/
+LogFiles/
+
+# ---- OS junk files ----
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Linux
+*~
+.nfs*
+
+# ---- Build system ----
+*.Publish.xml
+*.pubxml
+*.publishproj
+*.PublishProfiles/
+publish/
+`
