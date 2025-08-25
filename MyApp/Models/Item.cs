@@ -6,4 +6,5 @@ public class Item
     public string? Name { get; set; } = null!;
     public string? Color { get; set; }
     public float? Price { get; set; }
+    public int SerialNumberId { get; set; }
 }
