@@ -1,5 +1,5 @@
 <!-- PROJECT SHIELDS -->
-[![Version][version-shield]][version-url]
+[![Version][version-shield]]
 
 <!-- PAGE TITLE -->
 <div>
