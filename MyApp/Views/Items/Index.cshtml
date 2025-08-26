@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Color</th>
+            <th>Serial Number</th>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +20,10 @@
         {
             <tr>
                 <td>@item.Name</td>
-                <td>$@item.Price?.ToString("N2")</td>
+                <td>$@item.Price.ToString("N2")</td>
                 <td>@item.Color</td>
+                <td>@item.SerialNumber?.Name</td>
+                
                 <td>
                     @{ /* 
                           asp-action IS A TAG HELPER 
