@@ -1,3 +1,51 @@
 @model MyApp.Models.Item
 
+@{
+    string title = "Hello, world";
+}
+
+<h1>@title</h1>
+
 <p>This is the name of the item @Model.Name that is @Model.Color</p>
+
+@{
+    bool isLoggedIn = false;
+
+    List<Item> items = [
+        new Item(){
+            Name = "Monitor",
+            Color = "Beige"
+        }, 
+        new Item(){
+            Name = "Mouse",
+            Color = "Black"
+        }, 
+        new Item(){
+            Name = "Speaker",
+            Color = "Green"
+        }
+        ];
+}
+
+<div>
+    <H2>Items List:</H2>
+    @if (isLoggedIn == true)
+    {
+        <ul>
+            @foreach(Item item in items)
+            {
+                <li>@item.Name - @item.Color</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <h5 style="margin-top: 2rem;">Unauthorized Access</h5>
+    }
+    
+</div>
+
+
+
+
+

@@ -1,0 +1,46 @@
+@model List<MyApp.Models.Item>
+
+@{
+    ViewData["Title"] = "Index"; 
+}
+
+<h3>Index</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Color</th>
+            <th>Serial Number</th>
+            <th>Category</th>
+            <th>Client</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Item item in Model)
+        {
+            @foreach(ItemClient client in item.ItemClients)
+            {       
+                <tr>  
+                    <td>@item.Name</td>
+                    <td>$@item.Price.ToString("N2")</td>
+                    <td>@item.Color</td>
+                    <td>@item.SerialNumber?.Name</td>
+                    <td>@item.Category?.Name</td>
+                    <td>@client.Client.Name</td>
+                    <td>
+                        @{ /* 
+                            asp-action IS A TAG HELPER 
+                            IS A RAZOR SYNTEX HOW ALLOWS OUR PAGES TO 
+                            CONNECT TO THE SERVER-SIDE CODE                  
+                        */ }
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    <td></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

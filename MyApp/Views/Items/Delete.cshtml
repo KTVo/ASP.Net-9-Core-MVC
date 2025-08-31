@@ -1,0 +1,21 @@
+@model MyApp.Models.Item
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Would you like to delete this item?</h1>
+
+<p>@Model.Name</p>
+<p>@Model.Price</p>
+<p>@Model.Color</p>
+
+<!-- 
+    WHEN USER CLICKS THE SUBMIT DELETE BUTTON IT WILL BRING THE 
+    OPERATION TO THE Delete METHOD
+!-->
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" clas="btn btn-danger" value="Delete" />
+</form>
