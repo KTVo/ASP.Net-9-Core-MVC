@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyApp.Data;
 using MyApp.Models;
 
@@ -20,7 +16,12 @@ public class ItemsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        List<Item>? items = await _context.Items.Include(s => s.SerialNumber).ToListAsync();
+        //INCLUDES SEARCHES FOR SerialNumber and Category WHEN SEARCHING FOR ITEMS
+        List<Item>? items = await _context.Items.Include(s => s.SerialNumber)
+                                                .Include(c => c.Category)
+                                                .Include(ic => ic.ItemClients)
+                                                .ThenInclude(c => c.Client )
+                                                .ToListAsync();
 
         return View(items);
     }
@@ -29,12 +30,19 @@ public class ItemsController : Controller
     // HTML TAG LINKS TO THIS VIA asp-for="Create"
     public IActionResult Create()
     {
+        // USED TO DISPLAY ALL OF THE INFO FROM THE DATABASE FOR Categories
+        // SEARCHES Categories by the "Id"
+        // AND IT'LL DISPLAY IT BY "Name"
+        // THIS WILL CREATE A DICTIONARY THAT WILL BE PASSED TO THE CREATE VIEW PAGE
+        // WITHOUT THIS OUR Category DROPDOWN WOULD BE BLANK
+        ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
+
         return View();
     }
 
     // BINDS THE LABEL TO
     [HttpPost]
-    public async Task<IActionResult> Create([Bind("Id, Name, Price, Color")] Item item)
+    public async Task<IActionResult> Create([Bind("Id, Name, Price, Color, CategoryId")] Item item)
     {
         // VERIFIES IF THE INPUT IN OUR FORM IS AN ACTUAL ITEM
         if (ModelState.IsValid)
@@ -56,12 +64,20 @@ public class ItemsController : Controller
 
         if (foundItem == null) { return NotFound(); }
 
+        // USED TO DISPLAY ALL OF THE INFO FROM THE DATABASE FOR Categories
+        // SEARCHES Categories by the "Id"
+        // AND IT'LL DISPLAY IT BY "Name"
+        // THIS WILL CREATE A DICTIONARY THAT WILL BE PASSED TO THE CREATE VIEW PAGE
+        // WITHOUT THIS OUR Category DROPDOWN WOULD BE BLANK
+        ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
+
+
         return View(foundItem);
     }
 
     // UPDATES THE DATABASE WITH EDIT AND REDIRECTS TO INDEX PAGE
     [HttpPost]
-    public async Task<IActionResult> Edit([Bind("Id, Name, Price, Color")] Item item)
+    public async Task<IActionResult> Edit([Bind("Id, Name, Price, Color, CategoryId")] Item item)
     {
         if (ModelState.IsValid)
         {
