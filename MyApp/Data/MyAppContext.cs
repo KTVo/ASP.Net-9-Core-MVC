@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MyApp.Models;
+using MyApp.MVCS.Models;
 
 namespace MyApp.Data;
 

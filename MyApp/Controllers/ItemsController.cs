@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyApp.Data;
-using MyApp.Models;
+using MyApp.MVCS.Models;
 
 namespace MyApp.Controllers;
 

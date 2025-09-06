@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MyApp.Models;
+using MyApp.MVCS.Models;
+namespace MyApp.MVCS.Models;
 
 public class Item
 {

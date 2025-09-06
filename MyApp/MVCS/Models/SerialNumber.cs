@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyApp.Models;
+namespace MyApp.MVCS.Models;
 
 public class SerialNumber
 {

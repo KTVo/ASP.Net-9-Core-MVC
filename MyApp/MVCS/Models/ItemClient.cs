@@ -1,4 +1,4 @@
-namespace MyApp.Models;
+namespace MyApp.MVCS.Models;
 
 public class ItemClient
 {
